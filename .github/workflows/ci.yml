@@ -8,12 +8,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Taller1
     steps:
     - uses: actions/checkout@v4
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
     - name: Install dependencies
       run: npm ci
     - name: Run tests
@@ -23,12 +26,15 @@ jobs:
       if: always()
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Taller1
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - name: Install dependencies
         run: npm ci
       - name: Build check
